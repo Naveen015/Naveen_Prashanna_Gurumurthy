@@ -17,18 +17,18 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
+      - name: Install Microsoft Fonts
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ttf-mscorefonts-installer
+          sudo fc-cache -f -v
+          
       # Runs a single command using the runners shell
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
           # The root LaTeX file to be compiled
           root_file: Resume.tex
-
-          # Arbitrary bash codes to be executed before compiling LaTeX documents
-          pre_compile: tlmgr update --self && tlmgr update --all
-
-          # Arbitrary bash codes to be executed after compiling LaTeX documents
-          post_compile: latexmk -c
 
           # Instruct latexmk to use XeLaTeX
           latexmk_use_xelatex: true 
