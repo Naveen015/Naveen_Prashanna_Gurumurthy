@@ -16,10 +16,6 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-
-      - name: Download extra fonts
-        run: |
-          curl -OL https://github.com/silnrsi/font-doulos/raw/78bd59af3dd78e8276918471d8a228348bf741e8/references/v6200/DoulosSIL-Regular.ttf
           
       # Runs a single command using the runners shell
       - name: Compile LaTeX document
@@ -27,7 +23,6 @@ jobs:
         with:
           root_file: Resume.tex
           latexmk_use_xelatex: true 
-          extra_fonts: "./DoulosSIL-Regular.ttf"
           
       - name: Check pdf file
         run: |
