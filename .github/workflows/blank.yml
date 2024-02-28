@@ -19,7 +19,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Compile LaTeX document
-        uses: Naveen015/Naveen_Prashanna_Gurumurthy@v1
+        uses: Naveen015/Naveen_Prashanna_Gurumurthy
         with:
           # The root LaTeX file to be compiled
           root_file: Resume.tex
