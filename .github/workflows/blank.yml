@@ -17,22 +17,18 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - name: Install Microsoft Fonts
+      - name: Download extra fonts
         run: |
-          sudo apt-get update
-          sudo apt-get install -y ttf-mscorefonts-installer
-          sudo fc-cache -f -v
+          curl -OL https://github.com/silnrsi/font-doulos/raw/78bd59af3dd78e8276918471d8a228348bf741e8/references/v6200/DoulosSIL-Regular.ttf
           
       # Runs a single command using the runners shell
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
-          # The root LaTeX file to be compiled
           root_file: Resume.tex
-
-          # Instruct latexmk to use XeLaTeX
           latexmk_use_xelatex: true 
-
+          extra_fonts: "./DoulosSIL-Regular.ttf"
+          
       - name: Check pdf file
         run: |
           file Resume.pdf | grep -q ' PDF '
