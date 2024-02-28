@@ -19,7 +19,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Compile LaTeX document
-        uses: Naveen015/Naveen_Prashanna_Gurumurthy
+        uses: ./
         with:
           # The root LaTeX file to be compiled
           root_file: Resume.tex
@@ -63,10 +63,10 @@ jobs:
   
       - name: Upload file to repository
         run: |
-          git config --global user.name "your_username"
-          git config --global user.email "your_email"
-          git add report.pdf
-          git commit -m "commit message"
+          git config --global user.name "Naveen015"
+          git config --global user.email "gnaveen1509@gmail.com"
+          git add Resume.pdf
+          git commit -m "Updated Resume"
           git push
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
       
